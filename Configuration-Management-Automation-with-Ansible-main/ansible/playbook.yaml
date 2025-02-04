@@ -1,0 +1,25 @@
+- hosts: tag_linuxrp
+  gather_facts: yes
+  become: yes
+
+  roles:
+    - deploy_static_server
+
+  tasks:
+    - name: Run role only on Linux
+      include_role:
+        name: deploy_static_server
+      when: ansible_system == 'Linux'
+
+- hosts: tag_ubunturp
+  gather_facts: yes
+  become: yes
+
+  roles:
+    - deploy_static_server
+
+  tasks:
+    - name: Run role only on Linux
+      include_role:
+        name: deploy_static_server
+      when: ansible_system == 'Linux'
